@@ -3,6 +3,7 @@ package com.kjeffcoding.jpa.models.resourceTypes;
 import com.kjeffcoding.jpa.models.Resource;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -14,7 +15,8 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-@DiscriminatorValue("F")
+@PrimaryKeyJoinColumn(name = "file_id")
+//@DiscriminatorValue("F") --> only with SINGLE_TABLE
 public class File extends Resource {
     private String type;
 }
