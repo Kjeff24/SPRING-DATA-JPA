@@ -13,7 +13,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-@PrimaryKeyJoinColumn(name = "video_id")
+//@PrimaryKeyJoinColumn(name = "video_id")
 //@DiscriminatorValue("V") --> only with SINGLE_TABLE
 public class Video extends  Resource {
     private int length;
