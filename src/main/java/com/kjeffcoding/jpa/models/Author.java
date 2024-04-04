@@ -3,19 +3,19 @@ package com.kjeffcoding.jpa.models;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+
 @Entity
 @Data
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class Author {
-    @Id
-    @GeneratedValue
-    private Integer id;
+@SuperBuilder
+public class Author extends BaseEntity {
 
     private String firstName;
 
@@ -29,20 +29,10 @@ public class Author {
 
     private Integer age;
 
-    @Column(
-            updatable = false,
-            nullable = false
-    )
-    private LocalDateTime createdAt;
-
-    @Column(
-            insertable = false
-    )
-    private LocalDateTime lastModified;
-
     // ManyToMany relationship between authors and courses
     @ManyToMany(
             mappedBy = "authors"
     )
+    @JsonManagedReference
     private List<Course> courses;
 }

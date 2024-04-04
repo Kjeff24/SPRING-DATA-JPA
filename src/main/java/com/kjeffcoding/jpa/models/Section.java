@@ -1,21 +1,20 @@
 package com.kjeffcoding.jpa.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
+
+import java.util.List;
 
 @Data
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class Section {
-    @Id
-    @GeneratedValue
-    private Integer id;
+@SuperBuilder
+public class Section extends BaseEntity {
     private String name;
     private int sectionOrder;
 
@@ -24,4 +23,9 @@ public class Section {
     @JoinColumn(name = "course_id")
     @JsonBackReference
     private Course course;
+
+    // OneToMany relationship between Section and Lecture
+    @OneToMany(mappedBy = "section")
+    @JsonManagedReference
+    private List<Lecture> lectures;
 }

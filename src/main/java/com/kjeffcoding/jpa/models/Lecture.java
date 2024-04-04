@@ -3,32 +3,30 @@ package com.kjeffcoding.jpa.models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 @Entity
 @Data
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class Lecture {
-    @Id
-    @GeneratedValue
-    private Integer id;
+@SuperBuilder
+public class Lecture extends BaseEntity{
 
     private String name;
 
-//    @ManyToOne
-//    @JoinColumn(name = "section_id")
-//    @JsonBackReference
-//    private Section section;
+    // ManyToOne relationship between Lecture and Section
+    @ManyToOne
+    @JoinColumn(name = "section_id")
+    @JsonBackReference
+    private Section section;
 
-//    @OneToOne(
-//            mappedBy = "lecture",
-//            cascade = CascadeType.ALL
-//    )
-//    @JsonManagedReference
-//    private Resource resource;
+    // OneToOne relationship between Lecture and Resource
+    @OneToOne(
+            mappedBy = "lecture"
+    )
+    @JoinColumn(name = "resource_id")
+    @JsonManagedReference
+    private Resource resource;
 }
