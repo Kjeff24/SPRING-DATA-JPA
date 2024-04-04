@@ -1,4 +1,4 @@
-# E-LEARNING REST API WITH SPRING BOOT
+# SPRING DATA JPA
 
 ### INHERITANCE STRATEGY
 A resource could be of different types either, File, Text or Video. Checkout the Database as different inheritance strategy were implemented. Checkout the commit history in this repo to know the difference implementations.
