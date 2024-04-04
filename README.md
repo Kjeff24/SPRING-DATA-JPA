@@ -10,3 +10,10 @@ A resource could be of different types either, File, Text or Video. Checkout the
 
 3.TABLE_PER_CLASS: A table per concrete entity class. Each table(File, Text, Video) would include the attribute from the parent class(Resource)
 ![TABLE_PER_CLASS.png](src%2Fmain%2Fresources%2Fstatic%2FTABLE_PER_CLASS.png)
+
+### EMBEDDABLE
+@Embeddable, it means instances of that class can be embedded within other entities.
+<p>In the embedded package, the OrderId class was used to create componsite primary class in the Order entity class.
+The Address class was used to create entity instance in Order entity class 
+</p>
+NB: The scenario above was used to understand the concept of embeddable, and is no way a functional feature in this project
